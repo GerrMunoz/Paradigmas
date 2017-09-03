@@ -1,0 +1,148 @@
+object vonLukaz
+{
+ var energia = 150
+ var diversion = 70
+ var colorRopa = "blanca"
+ var edad = 17
+  method devolverRopa(){
+  return colorRopa
+ }
+  method devolverEdad(){
+  return edad
+  }
+  
+  method modificarEnergia(cantidad){
+  energia +=cantidad
+  }
+  
+  method modificarDiversion (cantidad) {
+  diversion +=cantidad
+  }
+  
+  method energia(cantidad){
+  energia=cantidad
+  }
+  
+ 
+}
+
+object bianker
+{
+ var energia = 140
+ var diversion = 80
+ var colorRopa = "negro"
+ var edad = 22
+ 
+ method devolverEdad(){
+ return edad
+ }
+  method devolverRopa(){
+  return colorRopa
+  }
+  
+    method modificarEnergia(cantidad){
+  energia +=cantidad
+  }
+  
+  method modificarDiversion (cantidad) {
+  diversion +=cantidad
+  }
+  
+    method energia(cantidad){
+  energia=cantidad
+  }
+  
+}
+
+object gonzen
+{
+ var energia = 90
+ var diversion = 15
+ var colorRopa = "negro"
+ var edad =33
+ 
+  method devolverEdad(){
+ return edad
+ }
+  method devolverRopa(){
+  return colorRopa
+  }
+ 
+   method modificarEnergia(cantidad){
+  energia +=cantidad
+  }
+  
+  method modificarDiversion (cantidad) {
+  diversion +=cantidad
+  }
+    method energia(cantidad){
+  energia=cantidad
+  }
+  }
+  
+   object rochenzen{
+ method puedePasarPersona(persona){
+ persona.devolverEdad()>=21
+ }
+ 
+ }
+ 
+ object rodrigsen{
+  method puedePasarPersona(persona){
+  return persona.devolverRopa()=="negro"
+  }
+  }
+  
+
+  
+    
+  object gustavotruccensen{
+  method puedePasarPersona(persona){
+  return false
+  }
+  
+object mainRoom
+{
+	var genteFiesteraMain=#{}
+	
+	method bailar(persona){
+	persona.modificarEnergia(-40)
+	persona.modificarDiversion(30)
+	}
+	
+	
+	method agregarPersona(persona){
+	genteFiesteraMain.add(persona)
+	}
+	
+	
+	method cantPersonas(){
+	return genteFiesteraMain.size()
+	}
+			
+	method bailenTodos(){
+	genteFiesteraMain.map({persona => persona.bailar()})
+	}
+	  
+	method bailaGozen(){
+	return genteFiesteraMain.contains(gonzen)
+	}
+	
+	
+  }
+  
+  object panoramaBar {
+	  var genteFiesteraPanorama=#{}
+	  method bailar(persona){
+	  }
+	  method djDixon(persona){
+	  persona.modificarEnergia(-60)
+	  persona.aumentarDiversion(120)
+	  }
+	   method djMarcel(persona){
+	   persona.energia(0)
+	    persona.modificarDiversion(1000)
+	 }
+	 method djTommy(persona){
+	 persona.modificarEnegia(-80)
+}
