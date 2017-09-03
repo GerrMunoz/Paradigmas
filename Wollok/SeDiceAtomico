@@ -1,0 +1,55 @@
+object burns {
+	
+	var cantidadDeVarillasDeUranio
+	
+	method produccion(ciudad) {
+		return cantidadDeVarillasDeUranio * 0.1
+	}
+	
+	method esContaminante() {
+		return cantidadDeVarillasDeUranio > 20
+	}
+	
+	method cantidadDeVarillasDeUranio(unaCantidad) {
+		cantidadDeVarillasDeUranio = unaCantidad
+	}
+}
+
+object exBosque {
+	
+	var capacidadEnToneladas
+	
+	method capacidadEnToneladas(unaCapacidad) {
+		capacidadEnToneladas = unaCapacidad
+	}
+	method produccion(ciudad) {
+		return 0.5 + capacidadEnToneladas * ciudad.riquezaDelSuelo()
+	}
+	
+	method esContaminante() {
+		return true
+	}
+	
+}
+
+object elSuspiro {
+	
+	var turbinas 
+	
+	method produccion(ciudad) {
+		return turbinas.sum({ turbina => turbina.produccion(ciudad) })
+	}
+	
+	method esContaminante() {
+		return false
+	}
+	
+	method agregarTurbina(unaTurbina) {
+		turbinas.add(unaTurbina)
+	}
+}
+
+object unaTurbina {
+	method produccion(ciudad) {
+		return 0.2 * ciudad.velocidadVientos()
+	}
