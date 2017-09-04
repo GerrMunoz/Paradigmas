@@ -65,4 +65,26 @@ object springfield {
 		return centrales.filter({ central => central.esContaminante() })
 	}
 	
+	method necesidad(unaNecesidad) {
+		necesidad = unaNecesidad
+	}
+	
+	method riquezaDelSuelo() {
+		return riquezaDelSuelo
+	}
+	
+	method velocidadVientos() {
+		return velocidadVientos
+	}
+	
+	method produccion() {
+		return centrales.sum({ central => central.produccion(self) })
+	}
+	
+	method cubreNecesidad() {
+		return self.produccion() > necesidad
+	}
+	
 }
+
+
