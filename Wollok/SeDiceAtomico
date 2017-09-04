@@ -53,3 +53,16 @@ object unaTurbina {
 	method produccion(ciudad) {
 		return 0.2 * ciudad.velocidadVientos()
 	}
+}
+
+object springfield {
+	var necesidad
+	var velocidadVientos = 10
+	var riquezaDelSuelo = 0.9
+	var centrales = #{burns, exBosque, elSuspiro}
+	
+	method centralesContaminantes() {
+		return centrales.filter({ central => central.esContaminante() })
+	}
+	
+}
