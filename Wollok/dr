@@ -1,0 +1,100 @@
+import EnfermedadInfecciosa.*
+import EnfermedadAutoinmune.*
+
+class Persona {
+	var temperatura
+	var celulas
+	var listaEnfermedad = #{}
+	
+	constructor(unaTemperatura,unaCantidadCelulas){
+		temperatura = unaTemperatura
+		celulas = unaCantidadCelulas
+	}
+	
+	method temperatura() = temperatura
+	method celulas() = celulas
+	
+	method temperatura(unaCantidad){
+		temperatura = 45.min(temperatura+unaCantidad)
+		
+	}
+	
+	method celulas(unaCantidad){
+		celulas -=unaCantidad
+	}
+	
+	method contraerEnfermedad(unaEnfermedad){
+		
+		listaEnfermedad.add(unaEnfermedad)
+		unaEnfermedad.efecto(self)
+	}
+}
+
+
+class EnfermedadAutoinmune {
+
+	var cantidadCelulasQueAmenaza
+	
+	constructor(unaCantidadDeCelulas){
+	
+		cantidadCelulasQueAmenaza = unaCantidadDeCelulas
+	}
+	
+	
+	method esAgresiva(unaPersona){
+		return unaPersona.diasConEnfermedad()>30
+	}
+	
+	
+	method destruirCelulas(unaPersona){
+		if(unaPersona.diasConEnfermedad()>0){
+			unaPersona.celulas(cantidadCelulasQueAmenaza)
+		}
+		
+	}
+	
+	method efecto(unaPersona){
+		self.destruirCelulas(unaPersona)
+	}
+	
+	method pasarUnDia(unaPersona){
+		
+	}
+
+}
+
+import Persona.*
+
+class EnfermedadInfecciosa {
+
+	var cantidadCelulasQueAmenaza
+	
+	constructor(unaCantidadDeCelulas){
+	
+		cantidadCelulasQueAmenaza = unaCantidadDeCelulas
+	}
+	
+	
+	method esAgresiva(unaPersona){
+		return cantidadCelulasQueAmenaza > unaPersona.celulas()*0.1
+	}
+	
+	
+	method aumentarTemperatura(unaPersona){
+		if(unaPersona.diasConEnfermedad()>0){
+			unaPersona.temperatura(0.001*cantidadCelulasQueAmenaza)	
+		}
+		
+	}
+	
+	method reproducir(){
+		
+		cantidadCelulasQueAmenaza = cantidadCelulasQueAmenaza*2
+		
+	}
+	
+	method efecto(unaPersona){
+		self.aumentarTemperatura(unaPersona)
+	}
+
+}
